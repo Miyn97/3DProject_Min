@@ -183,21 +183,33 @@ public class UIInventory : MonoBehaviour
     {
         if (selectedItem.type == ItemType.Consumable)
         {
-            for (int i = 0; i < selectedItem.consumables.Length; i++)
+            if (selectedItem.isOverTimeEffect)
             {
-                switch (selectedItem.consumables[i].type)
+                // 지속 회복이면 코루틴 실행
+                CharacterManager.Instance.Player.GetComponent<ItemCoroutine>()?.StartContinuousRecovery(selectedItem);
+            }
+            else
+            {
+                // 즉시 회복
+                foreach (var c in selectedItem.consumables)
                 {
-                    case ConsumableType.Health:
-                        condition.Heal(selectedItem.consumables[i].value);
-                        break;
-                    case ConsumableType.Hunger:
-                        condition.Eat(selectedItem.consumables[i].value);
-                        break;
+                    switch (c.type)
+                    {
+                        case ConsumableType.Health:
+                            condition.Heal(c.value);
+                            break;
+                        case ConsumableType.Hunger:
+                            condition.Eat(c.value);
+                            break;
+                    }
                 }
             }
-            RemoveSelctedItem();
+
+            RemoveSelctedItem(); // 아이템 1개 소비
         }
     }
+
+
 
     public void OnDropButton()
     {

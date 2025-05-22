@@ -20,4 +20,5 @@ MonoBehaviour:
   canStack: 0
   maxStackAmount: 0
   consumables: []
+  isOverTimeEffect: 0
   equipPrefab: {fileID: 9203571877200103562, guid: 92f426b0e8a4b034880cd56952561a9f, type: 3}

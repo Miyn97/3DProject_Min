@@ -39,6 +39,7 @@ public class ItemData : ScriptableObject
 
     [Header("Consumable")]
     public ItemDataConsumable[] consumables;
+    public bool isOverTimeEffect;
 
     [Header("Equip")]
     public GameObject equipPrefab;
