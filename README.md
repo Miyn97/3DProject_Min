@@ -1,7 +1,8 @@
 # 3DProject_Min
 
 ##개인과제 설명
-Unity3D의 캐릭터 이동과 물리 처리를 직접 구현하는 과제를 만들었습니다.
+![image](https://github.com/user-attachments/assets/3c9233e7-7ad9-47f1-b588-6983b972ffed)
+###Unity3D의 캐릭터 이동과 물리 처리를 직접 구현하는 과제를 만들었습니다.
 
 ##필수 기능 완료
 1. 기본 이동 및 점프 Input System, Rigidbody ForceMode
@@ -23,7 +24,8 @@ Unity3D의 캐릭터 이동과 물리 처리를 직접 구현하는 과제를 �
 3. 점프대를 바라볼 때 점프대에 관련된 설명과 파티클 효과를 추가했습니다. (Ray)
 4. 스테미나가 감소하는것을 구현했습니다.
 
-   ![image](https://github.com/user-attachments/assets/cb44e055-f71c-4401-8aba-e9c5190ea99f)
+   
+
 
 
 ##트러블슈팅
