@@ -152,7 +152,6 @@ public class PlayerController : MonoBehaviour
     {
         if (other.transform.parent != null && other.transform.parent.TryGetComponent(out MovingPlatform platform))
         {
-            Debug.Log($"[ÇÃ·§Æû ÁøÀÔ] {platform.name}");
             currentPlatform = platform;
         }
     }
@@ -164,7 +163,6 @@ public class PlayerController : MonoBehaviour
         {
             if (currentPlatform == platform)
             {
-                Debug.Log($"[ÇÃ·§Æû ÀÌÅ»] {platform.name}");
                 currentPlatform = null;
             }
         }
