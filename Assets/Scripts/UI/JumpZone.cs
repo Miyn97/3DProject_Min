@@ -1,17 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class JumpZone : MonoBehaviour
+public class JumpZone : MonoBehaviour, IInteractable
 {
-    private void OnTriggerEnter(Collider collision)
-    {
-        //Debug.Log("점프할거다");
-        if (!collision.gameObject.TryGetComponent(out Rigidbody rb))
-            return;
+    [SerializeField] private float jumpForce = 300f;
 
-        //Debug.Log("점프할거다2");
-        rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-        rb.AddForce(Vector3.up * 300f, ForceMode.Impulse);
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.TryGetComponent(out Rigidbody rb)) return;
+
+        // 수직 속도 초기화 후 위로 점프
+        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
+
+    // IInteractable 구현: 아이템 시스템과 동일하게 대응
+    public string GetInteractPrompt()
+    {
+        return "점프대입니다!\n올라가면 자동으로 점프됩니다.";
+    }
+
+    public void OnInteract()
+    {
+        // 점프대는 F키 상호작용이 필요 없으므로 비워두면 됩니다.
+        //Debug.Log("점프대는 F 키 없이 자동 작동합니다.");
+    }
+
 }
