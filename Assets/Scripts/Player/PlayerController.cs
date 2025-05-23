@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     public float jumpPower;
     private Vector2 curMovementInput;
     public LayerMask groundLayerMask;
+    private MovingPlatform currentPlatform;
+
 
     [Header("Look")]
     public Transform cameraContainer;
@@ -33,10 +35,18 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
+        if (currentPlatform != null)
+        {
+            // 먼저 발판 델타 적용
+            _rigidbody.MovePosition(_rigidbody.position + currentPlatform.PlatformDelta);
+        }
+
+        // 그리고 나서 입력 처리
         Move();
     }
+
 
     private void LateUpdate()
     {
@@ -54,6 +64,8 @@ public class PlayerController : MonoBehaviour
 
         _rigidbody.velocity = dir;
     }
+
+
 
     void CameraLook()
     {
@@ -84,9 +96,12 @@ public class PlayerController : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Started && IsGrounded())
         {
-            _rigidbody.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
+            currentPlatform = null; // 발판 보정 해제
+            _rigidbody.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
         }
     }
+
+
 
     bool IsGrounded()
     {
@@ -132,5 +147,29 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
         canLook = !toggle;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.parent != null && other.transform.parent.TryGetComponent(out MovingPlatform platform))
+        {
+            Debug.Log($"[플랫폼 진입] {platform.name}");
+            currentPlatform = platform;
+        }
+    }
+
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.transform.parent != null && other.transform.parent.TryGetComponent(out MovingPlatform platform))
+        {
+            if (currentPlatform == platform)
+            {
+                Debug.Log($"[플랫폼 이탈] {platform.name}");
+                currentPlatform = null;
+            }
+        }
+    }
+
+
 
 }
