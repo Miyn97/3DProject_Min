@@ -1,7 +1,10 @@
 # 3DProject_Min
 
 ## 개인과제 설명
-![image](https://github.com/user-attachments/assets/3c9233e7-7ad9-47f1-b588-6983b972ffed)
+![image](https://github.com/user-attachments/assets/bc61bfad-8ffa-45e4-9e0e-0c88df12364a)
+![image](https://github.com/user-attachments/assets/12e51fd7-369e-4c34-91ed-33ffd223d161)
+
+
 ### Unity3D의 캐릭터 이동과 물리 처리를 직접 구현하는 과제를 만들었습니다.
 
 ## 필수 기능 완료
