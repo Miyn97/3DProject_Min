@@ -2,7 +2,7 @@
 
 ## 개인과제 설명
 ![image](https://github.com/user-attachments/assets/bc61bfad-8ffa-45e4-9e0e-0c88df12364a)
-![image](https://github.com/user-attachments/assets/12e51fd7-369e-4c34-91ed-33ffd223d161)
+
 
 
 ### Unity3D의 캐릭터 이동과 물리 처리를 직접 구현하는 과제를 만들었습니다.
@@ -23,6 +23,7 @@
 
 
 ## 스스로 해보는 도전 기능 
+![image](https://github.com/user-attachments/assets/12e51fd7-369e-4c34-91ed-33ffd223d161)
 1. 무료 에셋을 다운받아서 Terrain을 이용해 던전 들어가기 전 재정비 느낌의 맵(협곡)을 디자인했습니다.
 2. 나무에 어떤부분을 도끼로 공격을해야 나무를 얻을 수 있는지 표적과 파티클 효과를 추가했습니다.
 3. 점프대를 바라볼 때 점프대에 관련된 설명과 파티클 효과를 추가했습니다. (Ray)
